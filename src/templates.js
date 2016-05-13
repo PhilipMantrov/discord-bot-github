@@ -6,9 +6,13 @@ function push(data) {
   const message = commit.message;
   const sha = commit.sha.substring(0, 7);
   const url = `https://github.com/${repo}/commit/${sha}`;
-  let content = `[**${repo}:${branch}**] 1 new commit by ${name}:`;
+  
+  let content = `${url}`;
+
+  /*let content = `[**${repo}:${branch}**] 1 new commit by ${name}:`;
   content += `\n${message} - ${name}`;
-  content += `\n${url}`;
+  content += `\n${url}`;*/
+
   return content;
 }
 
@@ -18,13 +22,15 @@ function pushMulti(data) {
   const size = data.payload.size;
   const commits = data.payload.commits;
 
-  let content = `[**${repo}:${branch}**] ${size} new commits:`;
+  let content = `${url}`;
+
+  /*let content = `[**${repo}:${branch}**] ${size} new commits:`;
   for (let commit of commits) {
     const sha = commit.sha.substring(0, 7);
     const url = `https://github.com/${repo}/commit/${sha}`;
     content += `\n${commit.message} - ${commit.author.name}`;
     content += `\n${url}`;
-  }
+  }*/
 
   return content;
 }
